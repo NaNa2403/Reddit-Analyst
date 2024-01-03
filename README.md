@@ -1,8 +1,8 @@
-# Real-Time Tweet Sentiment Analysis with Docker, Kafka and Spark Streaming
-This project is the continuation of a [first one](https://github.com/Wazzabeee/twitter-sentiment-analysis-pyspark) where I compared several classification algorithms implemented in PySpark on a sentiment analysis task.
+# Realtime streaming Reddit sentiment analysis
+Trong dự án này chúng tôi sẽ sử dụng dữ liệu [sentiment 140](https://www.kaggle.com/datasets/kazanova/sentiment140) để tạo ra mô hình dự đoán tâm trạng của bài viết.
 
-In this repository, you will find the implementation of an ETL process for sentiment analysis of tweets in real time. The idea here is to use the best model tested offline and deploy it online for real-time analysis. For this, I used Docker, Apache Kafka and Spark Streaming. The results of this analysis can be displayed in a console, saved locally, saved to a MongoDB database or saved to a data lake such as Delta Lake.
+Sau đó chúng tôi sẽ sử dụng kafka để streaming trực tiếp từ API của reddit và dùng pyspark để tạo dataframe, chạy qua mô hình mà đã tạo trước đó để dự đoán realtime. Luồng producer sẽ lấy ra 4 trường từ API của Reddit bao gồm thời gian, tác giả, tiêu đề và nội dung. Sau đó sẽ truyền về consumer để phân tích
 
-For more details on how this project works, how to create Topic Kafka, etc, I invite you to read [my article on Medium](https://medium.com/towards-artificial-intelligence/real-time-sentiment-analysis-with-docker-kafka-and-spark-streaming-952c06549de1) about this project. I detail there all the steps of the implementation and the execution of the program.
+Cuối cùng sẽ lấy kết quả thu được đưa về mongodb để lưu trữ dữ liệu
 
 <img src="images/flow.png"/>

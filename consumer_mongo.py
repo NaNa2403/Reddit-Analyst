@@ -81,6 +81,10 @@ if __name__ == "__main__":
             author = row["author"]
             upload_time = row["upload_time_vietnam"]
             prediction = row["prediction"]
+            
+            if content == "":
+                prediction = 1
+            
             document = {
                 "upload_time": upload_time,
                 "author": author,

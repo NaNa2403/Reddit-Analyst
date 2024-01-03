@@ -8,7 +8,7 @@ from datetime import datetime
 redditClientId = '8h8g1t7yJYOVP_B8bMih2Q'
 redditClientSecret = 'YFshn5ausxLow-Qjv3rNJ-822fBgvg'
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
-subreddit = 'popular'
+subreddit = 'Pepsi'
 topic_name = 'reddit_posts'
 
 logging.basicConfig(level=logging.INFO)
@@ -19,8 +19,8 @@ def fetch_reddit_posts(subreddit):
                          user_agent='Data')
 
     # Fetch posts from a specific subreddit
-    posts = reddit.subreddit(subreddit).new(limit=500)  # Fetches 10 latest posts
-
+    posts = reddit.subreddit(subreddit).new(limit=20)
+    # Fetches 10 latest posts
     for post in posts:
         title = post.title
         content = post.selftext
@@ -29,7 +29,7 @@ def fetch_reddit_posts(subreddit):
         else:
             author = "anonymous"
         upload_time = str(post.created_utc)
-
+        
         data = {
             'title': title,
             'content': content,
